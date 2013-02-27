@@ -14,11 +14,11 @@ def can_control_experiments():
     # importing user_models imports almost our entire codebase, which causes
     # circular references if any other piece of the codebase then imports
     # gae_bingo again. When we solve our circular import problem, FIXIT this.
-    import user_models
-
-    user_data = user_models.UserData.current(bust_cache=True)
-    return users.is_current_user_admin() or (user_data and user_data.developer)
-
+#     import user_models
+# 
+#     user_data = user_models.UserData.current(bust_cache=True)
+#     return users.is_current_user_admin() or (user_data and user_data.developer)
+    return True
 # CUSTOMIZE current_logged_in_identity to make your a/b sessions
 # stickier and more persistent per user.
 #
@@ -44,9 +44,10 @@ def current_logged_in_identity():
     # importing user_models imports almost our entire codebase, which causes
     # circular references if any other piece of the codebase then imports
     # gae_bingo again. When we solve our circular import problem, FIXIT this.
-    import user_models
-
-    return user_models.UserData.current(bust_cache=True)
+#     import user_models
+# 
+#     return user_models.UserData.current(bust_cache=True)
+    return None
 
 # Optionally, you can provide a function that will retrieve the identitiy given a query.
 # If not used, simply return None
@@ -55,8 +56,9 @@ def retrieve_identity(query):
     # importing user_models imports almost our entire codebase, which causes
     # circular references if any other piece of the codebase then imports
     # gae_bingo again. When we solve our circular import problem, FIXIT this.
-    import user_models
-
-    user_data = user_models.UserData.get_from_db_key_email(query)
-    return user_data.gae_bingo_identity if user_data else None
+#     import user_models
+# 
+#     user_data = user_models.UserData.get_from_db_key_email(query)
+#     return user_data.gae_bingo_identity if user_data else None
+	return None
 

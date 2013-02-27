@@ -16,17 +16,21 @@
 #
 import webapp2 as webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
+from gae_bingo.gae_bingo import ab_test
 
 class MainHandler(webapp.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+	    if ab_test("new button design"):
+	        self.response.write('Hello world!')
+	    else:
+	        self.response.write('Hello earth!')
 
 app = webapp.WSGIApplication([
     ('/', MainHandler)
 ], debug=True)
 
 from gae_bingo.middleware import GAEBingoWSGIMiddleware
-application = GAEBingoWSGIMiddleware(app)
+app = GAEBingoWSGIMiddleware(app)
 
 def main():
     run_wsgi_app(app)
