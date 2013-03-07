@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
-from webapp2_extras.routes import RedirectRoute
+# from webapp2_extras.routes import RedirectRoute
 
 from gae_bingo import cache, dashboard, middleware, plots, blotter, api, redirect
 
@@ -12,10 +12,11 @@ application = webapp.WSGIApplication([
     ("/gae_bingo/blotter/ab_test", blotter.AB_Test),
     ("/gae_bingo/blotter/bingo", blotter.Bingo),
 
-    ("/gae_bingo/redirect", redirect.Redirect),
+#     ("/gae_bingo/redirect", redirect.Redirect),
 
     ("/gae_bingo", dashboard.Dashboard),
-    RedirectRoute('/gae_bingo/dashboard', redirect_to='/gae_bingo'),
+    ("/gae_bingo/dashboard", dashboard.Dashboard),
+#     RedirectRoute('/gae_bingo/dashboard', redirect_to='/gae_bingo'),
     ("/gae_bingo/dashboard/archives", dashboard.Dashboard),
     ("/gae_bingo/dashboard/export", dashboard.Export),
 
