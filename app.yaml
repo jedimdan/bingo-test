@@ -1,4 +1,4 @@
-application: bingo-test
+application: jedimdantest
 version: 1
 runtime: python
 api_version: 1
@@ -9,6 +9,8 @@ handlers:
   static_dir: gae_bingo/static
 - url: /gae_bingo/tests/.*
   script: gae_bingo/tests/main.py
+- url: /gae_bingo
+  script: gae_bingo/main.py
 - url: /gae_bingo/.*
   script: gae_bingo/main.py
 - url: /.*
