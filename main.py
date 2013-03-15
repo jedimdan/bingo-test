@@ -20,14 +20,14 @@ from gae_bingo.gae_bingo import ab_test, bingo
 
 class MainHandler(webapp.RequestHandler):
     def get(self):
-	    if ab_test("new button design", conversion_name="Click Me or Click Here"):
+	    if ab_test("new button design"):
 	        self.response.write('Hello world! <a href="/click">Click Me!</a>')
 	    else:
 	        self.response.write('Hello world! <a href="/click">Click Here!</a>')
 	        
 class ReceivingHandler(webapp.RequestHandler):
 	def get(self):
-		bingo("Click Me or Click Here")
+		bingo("new button design")
 		self.response.write('Thanks!')
 			        
 
